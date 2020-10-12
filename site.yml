@@ -1,0 +1,7 @@
+- name: laptop
+  roles:
+    - user_interface
+    - system_tools
+    - rust_tools
+    - dev_tools
+    - reversing_tools

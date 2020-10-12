@@ -1,0 +1,10 @@
+- name: Install some basic system necessities first
+  package:
+    name:
+      - zsh
+      - zsh-common
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
+      - neovim
+      - rxvt-unicode
+    state: latest
