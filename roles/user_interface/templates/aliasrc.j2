@@ -1,9 +1,13 @@
 ### All about aliases ###
 
 # Some ls aliases
-alias ls="${aliases[ls]:-ls} -A"
-alias ll="${aliases[ls]:-ls} -Al"
-alias diff="${aliases[diff]:-colordiff}"
+# Aliases
+alias la='ls -Alh --color=auto'
+alias ll='ls -Alh --color=auto'
+alias ls='ls -A --color=auto'
+alias l='ls --color=auto'
+alias grep='grep --color=auto'
+alias diff='colordiff'
 
 # Some nice xclip aliases
 if (( $+commands[xclip] && $#DISPLAY )); then
