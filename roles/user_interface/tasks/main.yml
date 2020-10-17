@@ -28,7 +28,6 @@
     dest: /home/{{ ansible_user }}/.config/compton.config
     src: compton.config.j2
     backup: yes
-    owner: {{ ansible_user }}
   tags: compton
 
 - name: Ensures /home/{{ ansible_user }}/.config/i3 dir exists
@@ -39,7 +38,6 @@
     dest: /home/{{ ansible_user }}/.config/i3/config
     src: i3_config.j2
     backup: yes
-    owner: {{ ansible_user }}
 
 - name: Ensures /home/{{ ansible_user }}/.config/i3status dir exists
   file: path=/home/{{ ansible_user }}/.config/i3status state=directory
@@ -49,7 +47,6 @@
     dest: /home/{{ ansible_user }}/.config/i3status/config
     src: i3status_config.j2
     backup: yes
-    owner: {{ ansible_user }}
 
 - name: Ensures /home/{{ ansible_user }}/.config/dunst dir exists
   file: path=/home/{{ ansible_user }}/.config/dunst state=directory
@@ -59,4 +56,3 @@
     dest: /home/{{ ansible_user }}/.config/dunst/dunstrc
     src: dunstrc.j2
     backup: yes
-    owner: {{ ansible_user }}
