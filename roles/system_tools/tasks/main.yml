@@ -1,47 +1,48 @@
 ---
 - name: Install some basic system necessities first
-  package:
-    name:
-      - zsh
-      - zsh-common
-      - zsh-autosuggestions
-      - zsh-syntax-highlighting
-      - neovim
-      - rxvt-unicode
-      - sysstat
-      - htop
-      - atop
-      - git
-      - rdesktop
-      - openvpn
-      - python-dev
-      - gimp
-      - inkscape
-      - sqlite
-      - imagemagick
-      - grass
-      - spatialite-gui
-      - spatialite-bin
-      - qgis
-      - pandoc
-      - texlive-latex-base
-      - texlive-latex-recommended
-      - texlive-latex-extra
-      - texlive-fonts-recommended
-      - xclip
-      - xsel
-      - yank
-      - fonts-noto
-      - fonts-mplus
-      - sqliteman
-      - filezilla
-      - gummi
-      - texmaker
-      - wireshark
-      - cifs-utils
-      - meld
-      - thefuck
+  apt:
+    name: "{{ item }}"
     state: latest
+  with_items:
+    - zsh
+    - zsh-common
+    - zsh-autosuggestions
+    - zsh-syntax-highlighting
+    - neovim
+    - rxvt-unicode
+    - sysstat
+    - htop
+    - atop
+    - git
+    - rdesktop
+    - openvpn
+    - python-dev
+    - gimp
+    - inkscape
+    - sqlite
+    - imagemagick
+    - grass
+    - spatialite-gui
+    - spatialite-bin
+    - qgis
+    - pandoc
+    - texlive-latex-base
+    - texlive-latex-recommended
+    - texlive-latex-extra
+    - texlive-fonts-recommended
+    - xclip
+    - xsel
+    - yank
+    - fonts-noto
+    - fonts-mplus
+    - sqliteman
+    - filezilla
+    - gummi
+    - texmaker
+    - wireshark
+    - cifs-utils
+    - meld
+    - thefuck
 
 - name: Download and install Veles
   apt:

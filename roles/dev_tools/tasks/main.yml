@@ -1,8 +1,10 @@
 ---
-- name: Installling development tools
-  package:
+- name: Installing development tools
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
     - vscode
     - strace
     - google-perftools
     - devscripts
-  state: latest

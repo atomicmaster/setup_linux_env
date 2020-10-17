@@ -1,23 +1,26 @@
 ---
 - name: Install i3 wm
-  package:
-    name: 
-      - i3-wm
-      - i3lock
-      - i3lock-fancy
-      - i3status
+  apt:
+    name: "{{ item }}"
     state: latest
+  with_items:
+    - i3-wm
+    - i3lock
+    - i3lock-fancy
+    - i3status
+    
 
 - name: Install some extra tools to make window manager better
-  package:
-    name:
-      - suckless-tools
-      - dunst
-      - compton
-      - hsetroot
-      - rofi
-      - xsettingsd
-      - lxappearance
-      - scrot
-      - viewnoir
+  apt:
+    name: "{{ item }}"
     state: latest
+  with_items:
+    - suckless-tools
+    - dunst
+    - compton
+    - hsetroot
+    - rofi
+    - xsettingsd
+    - lxappearance
+    - scrot
+    - viewnoir
