@@ -36,6 +36,7 @@
     - reversing_tools
 
 - name: Set up zsh for our user
+  hosts: laptop
   become: no
   vars:
     local_user: "{{ ansible_user_id }}"
