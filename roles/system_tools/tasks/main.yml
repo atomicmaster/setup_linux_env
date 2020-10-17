@@ -62,7 +62,7 @@
   get_url:
     url: https://github.com/gokcehan/lf/releases/download/r17/lf-linux-amd64.tar.gz
     dest: /home/{{ ansible_user }}/Downloads/lf-linux-amd64.tar.gz
-    checksum: SHA256:1512EA940DEE831BCCC918FA804059D76837B7758A0A2AF6B5E6C8A616B8B864
+    checksum: sha256:1512EA940DEE831BCCC918FA804059D76837B7758A0A2AF6B5E6C8A616B8B864
 
 
 - name: Insall lf
