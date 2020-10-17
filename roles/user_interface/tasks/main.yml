@@ -71,6 +71,7 @@
     name: git+https://github.com/boramalper/himawaripy.git
 
 - name: Periodically update images and set them as new background.
+  become: no
   cron:
     name: "update background"
     minute: "*/15"
