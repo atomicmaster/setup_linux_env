@@ -103,14 +103,3 @@
     src: shortcutrc.j2
     backup: yes
   tags: shortcutrc
-
-- name: Set up zsh for user
-  become: no
-  vars:
-    the_user: "{{ ansible_user_id }}"
-  tasks:
-    - name: change user shell to zsh 
-      become: yes
-      user:
-        name: "{{ the_user }}"
-        shell: /bin/zsh
