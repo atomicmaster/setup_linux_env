@@ -68,4 +68,4 @@
 - name: Install himawaripy
   become: no
   pip:
-    name: git+ssh://github.com:boramalper/himawaripy.git
+    name: git+https://github.com/boramalper/himawaripy.git
