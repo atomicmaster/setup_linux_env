@@ -2,7 +2,7 @@
 - name: Install some basic system necessities first
   apt:
     name: "{{ item }}"
-    state: latest
+    state: present
   with_items:
     - zsh
     - zsh-common
