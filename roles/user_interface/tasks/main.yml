@@ -72,6 +72,13 @@
     src: xsettingsd.j2
     backup: yes
 
+- name: Copy .Xresources
+  become: no
+  template:
+    dest: /home/{{ ansible_user }}/.Xresources
+    src: xresources.j2
+    backup: yes
+
 - name: Ensures /home/{{ ansible_user }}/.urxvt dir exists
   become: no
   file: path=/home/{{ ansible_user }}/.urxvt state=directory
