@@ -65,6 +65,38 @@
     src: dunstrc.j2
     backup: yes
 
+- name: Copy .xsettingsd
+  become: no
+  template:
+    dest: /home/{{ ansible_user }}/.xsettingsd
+    src: xsettingsd.j2
+    backup: yes
+
+- name: Ensures /home/{{ ansible_user }}/.urxvt dir exists
+  become: no
+  file: path=/home/{{ ansible_user }}/.urxvt state=directory
+
+- name: Urxvt clipboard
+  become: no
+  template:
+    dest: /home/{{ ansible_user }}/.urxvt/clipboard
+    src: clipboard.j2
+    backup: yes
+
+- name: Urxvt url select
+  become: no
+  template:
+    dest: /home/{{ ansible_user }}/.urxvt/url_select
+    src: url_select.j2
+    backup: yes
+
+- name: Urxvt keyboard select
+  become: no
+  template:
+    dest: /home/{{ ansible_user }}/.urxvt/keyboard_select
+    src: keyboard_select.j2
+    backup: yes
+
 - name: Install himawaripy
   become: no
   pip:
