@@ -1,9 +1,7 @@
 ---
 - name: Install some basic system necessities first
   apt:
-    name: "{{ item }}"
-    state: present
-  with_items:
+    pkg:
     - zsh
     - zsh-common
     - zsh-autosuggestions

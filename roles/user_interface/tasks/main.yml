@@ -1,9 +1,7 @@
 ---
 - name: Install i3 wm
   apt:
-    name: "{{ item }}"
-    state: present
-  with_items:
+    pkg:
     - i3-wm
     - i3lock
     - i3lock-fancy
@@ -11,9 +9,7 @@
 
 - name: Install some extra tools to make window manager better
   apt:
-    name: "{{ item }}"
-    state: present
-  with_items:
+    pkg:
     - suckless-tools
     - dunst
     - compton
