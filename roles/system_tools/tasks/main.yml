@@ -42,6 +42,8 @@
     - meld
     - thefuck
     - python3-selinux
+    - firejail
+    - firejail-profiles
 
 - name: Download and install Veles
   apt:
