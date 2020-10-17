@@ -1,7 +1,6 @@
 ---
 - name: Configure a new ParrotOS from install
   hosts: laptop
-  remote_user: root
 
   tasks:
     - name: Get aptitude for upgrade
@@ -18,7 +17,7 @@
     - name: Upgrade the OS (apt-get dist-upgrade)
       apt:
         upgrade: dist
-        
+
     - name: Remove useless packages from the cache
       apt:
         autoclean: yes
