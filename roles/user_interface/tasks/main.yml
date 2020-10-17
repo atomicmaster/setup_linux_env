@@ -19,3 +19,44 @@
     - lxappearance
     - scrot
     - viewnior
+
+- name: Ensures /home/{{ ansible_user }}/.config dir exists
+  file: path=/home/{{ ansible_user }}/.config state=directory
+
+- name: Copy compton config
+  template:
+    dest: /home/{{ ansible_user }}/.config/compton.config
+    src: compton.config.j2
+    backup: yes
+    owner: {{ ansible_user }}
+  tags: compton
+
+- name: Ensures /home/{{ ansible_user }}/.config/i3 dir exists
+  file: path=/home/{{ ansible_user }}/.config/i3 state=directory
+
+- name: Copy i3 config
+  template:
+    dest: /home/{{ ansible_user }}/.config/i3/config
+    src: i3_config.j2
+    backup: yes
+    owner: {{ ansible_user }}
+
+- name: Ensures /home/{{ ansible_user }}/.config/i3status dir exists
+  file: path=/home/{{ ansible_user }}/.config/i3status state=directory
+
+- name: Copy i3status config
+  template:
+    dest: /home/{{ ansible_user }}/.config/i3status/config
+    src: i3status_config.j2
+    backup: yes
+    owner: {{ ansible_user }}
+
+- name: Ensures /home/{{ ansible_user }}/.config/dunst dir exists
+  file: path=/home/{{ ansible_user }}/.config/dunst state=directory
+
+- name: Copy dunstrc
+  template:
+    dest: /home/{{ ansible_user }}/.config/dunst/dunstrc
+    src: dunstrc.j2
+    backup: yes
+    owner: {{ ansible_user }}
