@@ -70,10 +70,17 @@
   pip:
     name: git+https://github.com/boramalper/himawaripy.git
 
+- name: Copy background changer script
+  become: no
+  template:
+    dest: /home/{{ ansible_user }}/bg_changer.sh
+    src: bg_changer.j2
+    backup: yes
+
 - name: Periodically update images and set them as new background.
   become: no
   cron:
     user: "{{ ansible_user }}"
     name: "update background"
     minute: "*/15"
-    job: "himawaripy -l 4 && hsetroot -center $(ls -d -1 /home/{{ ansible_user }}/.cache/himawaripy/*)"
+    job: "sh /home/{{ ansible_user }}/bg_changer.sh"
