@@ -39,7 +39,7 @@
   hosts: laptop
   become: no
   vars:
-    local_user: "{{ ansible_user_id }}"
+    local_user: "{{ ansible_user }}"
   tasks:
     - name: change user shell to zsh 
       become: yes
