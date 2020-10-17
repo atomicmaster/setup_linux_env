@@ -41,8 +41,14 @@
     - cifs-utils
     - meld
     - thefuck
+    - python3-selinux
 
 - name: Download and install Veles
   apt:
     deb: https://github.com/codilime/veles/releases/download/2018.05.0.TIF/Veles_2018.05_64bit_Ubuntu1604.deb
-  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux")
+
+- name: Download and install Min (web browser)
+  apt:
+    deb: https://github.com/minbrowser/min/releases/download/v1.16.0/min_1.16.0_amd64.deb
+  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux")
