@@ -1,6 +1,8 @@
 ---
 - name: Configure a new ParrotOS from install
   hosts: laptop
+  become: true
+  become_user: root
 
   tasks:
     - name: Get aptitude for upgrade
