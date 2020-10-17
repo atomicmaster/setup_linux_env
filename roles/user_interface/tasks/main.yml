@@ -64,3 +64,8 @@
     dest: /home/{{ ansible_user }}/.config/dunst/dunstrc
     src: dunstrc.j2
     backup: yes
+
+- name: Install himawaripy
+  become: no
+  pip:
+    name: himawaripy
