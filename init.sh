@@ -1,2 +1,2 @@
 #!/bin/env bash
-ansible-playbook site.yml -i ./hosts --ask-sudo-pass -vvv
+ansible-playbook site.yml -i ./hosts --ask-become-pass -vvv
