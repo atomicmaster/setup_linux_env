@@ -1,0 +1,13 @@
+### All about aliases ###
+
+# Some ls aliases
+alias ls="${aliases[ls]:-ls} -A"
+alias ll="${aliases[ls]:-ls} -Al"
+alias diff="${aliases[diff]:-colordiff}"
+
+# Some nice xclip aliases
+if (( $+commands[xclip] && $#DISPLAY )); then
+  alias x='xclip -selection clipboard -in'
+  alias v='xclip -selection clipboard -out'
+  alias c='xclip -selection clipboard -in -filter'
+fi

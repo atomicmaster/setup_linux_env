@@ -1,0 +1,7 @@
+# Control + S to copy buffer to clipboard
+if (( $+commands[xclip] && $#DISPLAY )); then
+  bindkey '^S' copy-buffer-to-clipboard
+fi
+
+# Control + o to use lf
+bindkey -s '^o' 'lfcd\n'
