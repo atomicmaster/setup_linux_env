@@ -103,3 +103,18 @@
     src: shortcutrc.j2
     backup: yes
   tags: shortcutrc
+
+- name: create .zsh dir
+  become: no
+  file:
+    path: /home/{{ ansible_user }}/.zsh
+    state: directory
+
+- name: create .zplug dir
+  become: no
+  file:
+    path: /home/{{ ansible_user }}/.zsh
+    state: directory
+
+- name: create .zplug dir and copy all the necessary files into it
+  command: cp -r /usr/share/zplug/ /home/{{ ansible_user }}/.zplug/
