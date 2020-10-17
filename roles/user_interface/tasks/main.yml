@@ -69,3 +69,9 @@
   become: no
   pip:
     name: git+https://github.com/boramalper/himawaripy.git
+
+- name: Periodically update images and set them as new background.
+  cron:
+    name: "update background"
+    minute: "*/15"
+    job: "himawaripy -l 4 && hsetroot -center $(ls -d -1 /home/{{ ansible_user }}/.cache/himawaripy/*)"
