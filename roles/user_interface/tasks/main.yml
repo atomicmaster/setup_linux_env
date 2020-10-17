@@ -16,9 +16,6 @@
       - hsetroot
       - rofi
       - xsettingsd
-      - xsel
-      - fonts-noto
-      - fonts-mplus
       - lxappearance
       - scrot
       - viewnoir

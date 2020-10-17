@@ -1,0 +1,7 @@
+- name: Installling development tools
+  package:
+    - vscode
+    - strace
+    - google-perftools
+    - devscripts
+  state: latest

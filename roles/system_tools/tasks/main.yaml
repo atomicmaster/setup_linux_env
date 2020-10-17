@@ -1,3 +1,11 @@
+- name: Do all the basic things first
+  tasks:
+    - name: Get aptitude for upgrade
+      apt: pkg=aptitude state=present
+
+    - name: Safe system upgrade via aptitude
+      apt: upgrade=safe
+
 - name: Install some basic system necessities first
   package:
     name:
@@ -7,4 +15,42 @@
       - zsh-syntax-highlighting
       - neovim
       - rxvt-unicode
+      - sysstat
+      - htop
+      - atop
+      - git
+      - rdesktop
+      - openvpn
+      - python-dev
+      - gimp
+      - inkscape
+      - sqlite
+      - imagemagick
+      - grass
+      - spatialite-gui
+      - spatialite-bin
+      - qgis
+      - pandoc
+      - texlive-latex-base
+      - texlive-latex-recommended 
+      - texlive-latex-extra
+      - texlive-fonts-recommended
+      - xclip
+      - xsel
+      - yank
+      - fonts-noto
+      - fonts-mplus
+      - sqliteman
+      - filezilla
+      - gummi
+      - texmaker
+      - wireshark
+      - cifs-utils
+      - meld
+      - thefuck
     state: latest
+
+- name: Download and install Veles
+  apt:
+    deb: https://github.com/codilime/veles/releases/download/2018.05.0.TIF/Veles_2018.05_64bit_Ubuntu1604.deb
+  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
