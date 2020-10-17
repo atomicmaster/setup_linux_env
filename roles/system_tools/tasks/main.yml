@@ -86,7 +86,6 @@
     dest: /home/{{ ansible_user }}/.zshrc
     src: zshrc.j2
     backup: yes
-    msg: Don't forget to p10k configure if you haven't done so already
   tags: zshrc
 
 - name: Deploy aliasrc
@@ -104,4 +103,3 @@
     src: shortcutrc.j2
     backup: yes
   tags: shortcutrc
-
