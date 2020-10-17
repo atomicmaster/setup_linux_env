@@ -1,5 +1,7 @@
 ---
-- name: laptop
+- name: Configure a new ParrotOS from install
+  hosts: laptop
+  remote_user: root
   roles:
     - system_tools
     - user_interface
