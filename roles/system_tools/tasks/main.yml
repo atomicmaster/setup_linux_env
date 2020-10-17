@@ -103,3 +103,6 @@
     src: shortcutrc.j2
     backup: yes
   tags: shortcutrc
+
+- debug:
+  msg: Don't forget to p10k configure if you haven't done so already

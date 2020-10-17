@@ -34,6 +34,3 @@
     - rust_tools
     - dev_tools
     - reversing_tools
-
-- debug:
-  msg: Don't forget to p10k configure if you haven't done so already
