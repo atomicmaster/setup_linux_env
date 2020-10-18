@@ -19,6 +19,8 @@
     - lxappearance
     - scrot
     - viewnior
+    - feh
+    - font-manager
 
 - name: Ensures /home/{{ ansible_user }}/.config dir exists
   become: no
