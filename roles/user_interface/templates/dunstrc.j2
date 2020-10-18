@@ -10,7 +10,7 @@ horizontal_padding = 24
 frame_width = 2
 sort = no
 idle_threshold = 120
-font = Noto Sans 8
+font = Noto Sans 10
 line_height = 4
 markup = full
 format = "<b>%s</b>\n%b"
@@ -24,7 +24,7 @@ show_indicators = no
 icon_position = off
 sticky_history = yes
 history_length = 20
-browser = /usr/bin/firefox -new-tab
+browser = /usr/bin/firejail --private --dns=1.1.1.1 --dns=208.67.222.222 /usr/local/bin/min
 always_run_script = true
 title = Dunst
 class = Dunst
