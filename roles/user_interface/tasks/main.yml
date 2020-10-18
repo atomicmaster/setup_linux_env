@@ -122,4 +122,4 @@
     user: "{{ ansible_user }}"
     name: "update background"
     minute: "*/15"
-    job: "sh /home/{{ ansible_user }}/bg_changer.sh"
+    job: "/usr/bin/sh /home/{{ ansible_user }}/bg_changer.sh"
