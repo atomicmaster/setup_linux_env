@@ -51,9 +51,9 @@
   apt:
     pkg:
       - libgcc1
-  tags: bat
   register: batdep
-  
+  tags: bat
+
 - name: Download and install Veles
   apt:
     deb: https://github.com/codilime/veles/releases/download/2018.05.0.TIF/Veles_2018.05_64bit_Ubuntu1604.deb
@@ -69,7 +69,7 @@
 - name: Download and install bat (cat, but better)
   apt:
     deb: https://github.com/sharkdp/bat/releases/download/v0.16.0/bat_0.16.0_amd64.deb
-  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux") and batdep is defined
+  when: batdep|success and ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux")
   tags: bat
 
 - name: Download lf
