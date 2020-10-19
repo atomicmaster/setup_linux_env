@@ -1,4 +1,9 @@
 ---
+- name: Installing a bat dependency that itself had failed dependencies
+  apt:
+    deb: https://github.com/atomicmaster/setup_linux_env/raw/master/packages/libgcc1_amd64.deb
+  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux")
+  tags: [bat, libgcc1]
 
 - name: Download and install bat (cat, but better, and written in Rust)
   apt:
