@@ -51,8 +51,7 @@
 - name: Download and install dependencies for stuff later on
   apt:
     pkg:
-      - libgcc-10-dev
-  tags: bat
+      name: gcc-10-base=10.1.0-1
 
 - name: Download and install Veles
   apt:
