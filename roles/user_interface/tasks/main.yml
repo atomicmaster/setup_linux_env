@@ -150,3 +150,11 @@
     minute: "*/15"
     job: "/usr/local/bin/himawaripy -l 4"
   tags: [bg, wallpaper, himararipy, himawari]
+
+- name: Change to natural scrolling for the touchpad
+  become: yes
+  template:
+    dest: /etc/X11/xorg.conf.d/90-synaptics.conf
+    src: 90-synaptics.conf.j2
+    backup: yes
+  tags: [xorg, touchpad, scrolling]
