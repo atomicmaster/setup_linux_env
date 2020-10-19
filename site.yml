@@ -31,8 +31,8 @@
   roles:
     - system_tools
     - user_interface
-    - rust_tools
     - dev_tools
+    - rust_tools
     - reversing_tools
 
 - name: Set up zsh for our user

@@ -47,11 +47,10 @@
     - firejail-profiles
     - colordiff
 
-- name: Download and install bat dependencies
+- name: Download and install dependencies for stuff later on
   apt:
     pkg:
       - libgcc1
-  register: batdep
   tags: bat
 
 - name: Download and install Veles
@@ -65,12 +64,6 @@
     deb: https://github.com/minbrowser/min/releases/download/v1.16.0/min_1.16.0_amd64.deb
   when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux")
   tags: min
-    
-- name: Download and install bat (cat, but better)
-  apt:
-    deb: https://github.com/sharkdp/bat/releases/download/v0.16.0/bat_0.16.0_amd64.deb
-  when: batdep|success and ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux")
-  tags: bat
 
 - name: Download lf
   become: no
