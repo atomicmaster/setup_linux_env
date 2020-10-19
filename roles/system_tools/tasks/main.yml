@@ -46,11 +46,12 @@
     - firejail
     - firejail-profiles
     - colordiff
+    - fd-find
 
 - name: Download and install dependencies for stuff later on
   apt:
     pkg:
-      - libgcc1
+      - libgcc-10-dev
   tags: bat
 
 - name: Download and install Veles
