@@ -8,9 +8,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=247'
 FZF_CTRL_T_COMMAND='fd --type f --hidden --exclude .git --exclude .cache'
 FZF_ALT_C_COMMAND='fd --type d --hidden --exclude .git'
 
-if (( $+commands[bat] && $#DISPLAY )); then
-  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-fi
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 #### Zplug Section #####
 
