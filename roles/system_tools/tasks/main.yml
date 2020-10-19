@@ -46,7 +46,6 @@
     - firejail
     - firejail-profiles
     - colordiff
-    - libgcc1
 
 - name: Download and install Veles
   apt:
@@ -60,10 +59,18 @@
   when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux")
   tags: min
 
-- name: Download and install Bat (cat, but better)
+- name: Download and install bat dependencies
+  apt:
+    pkg:
+      - libgcc1
+  tags: bat
+  ansible.builtin.set_fact:
+    batdep: true
+      
+- name: Download and install bat (cat, but better)
   apt:
     deb: https://github.com/sharkdp/bat/releases/download/v0.16.0/bat_0.16.0_amd64.deb
-  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux")
+  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux") and batdep is defined
   tags: bat
 
 - name: Download lf
