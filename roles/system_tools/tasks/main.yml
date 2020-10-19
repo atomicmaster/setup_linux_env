@@ -64,8 +64,7 @@
     pkg:
       - libgcc1
   tags: bat
-  ansible.builtin.set_fact:
-    batdep: true
+  register: batdep
       
 - name: Download and install bat (cat, but better)
   apt:
