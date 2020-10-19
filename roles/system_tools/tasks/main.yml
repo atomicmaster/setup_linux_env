@@ -59,6 +59,12 @@
   when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux")
   tags: min
 
+- name: Download and install Bat (cat, but better)
+  apt:
+    deb: https://github.com/sharkdp/bat/releases/download/v0.16.0/bat_0.16.0_amd64.deb
+  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux")
+  tags: bat
+
 - name: Download lf
   become: no
   get_url:
@@ -66,7 +72,6 @@
     dest: /home/{{ ansible_user }}/Downloads/lf-linux-amd64.tar.gz
     checksum: sha256:1512EA940DEE831BCCC918FA804059D76837B7758A0A2AF6B5E6C8A616B8B864
   tags: lf
-
 
 - name: Insall lf
   become: yes

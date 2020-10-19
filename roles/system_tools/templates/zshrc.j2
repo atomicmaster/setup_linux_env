@@ -8,6 +8,10 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=247'
 FZF_CTRL_T_COMMAND='fd --type f --hidden --exclude .git --exclude .cache'
 FZF_ALT_C_COMMAND='fd --type d --hidden --exclude .git'
 
+if (( $+commands[bat] && $#DISPLAY )); then
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
+
 #### Zplug Section #####
 
 zplug "zsh-users/zsh-autosuggestions"
@@ -67,3 +71,6 @@ fi
 
 # And load everything
 zplug load
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
