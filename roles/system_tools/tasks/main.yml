@@ -46,6 +46,7 @@
     - firejail
     - firejail-profiles
     - colordiff
+    - libgcc1
 
 - name: Download and install Veles
   apt:
