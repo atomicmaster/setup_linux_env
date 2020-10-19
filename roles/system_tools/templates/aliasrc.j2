@@ -8,6 +8,7 @@ alias ls='ls -A --color=auto'
 alias l='ls --color=auto'
 alias grep='grep --color=auto'
 alias diff='colordiff'
+alias find='fdfind'
 
 # Some nice xclip aliases
 if (( $+commands[xclip] && $#DISPLAY )); then
@@ -19,5 +20,6 @@ fi
 # Some nice bat aliases 
 if (( $+commands[bat] && $#DISPLAY )); then
   alias cat='bat'
+  alias find='fdfind -X bat'
   alias fd='fdfind -X bat'
 fi
