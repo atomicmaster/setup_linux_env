@@ -51,11 +51,13 @@
   apt:
     deb: https://github.com/codilime/veles/releases/download/2018.05.0.TIF/Veles_2018.05_64bit_Ubuntu1604.deb
   when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux")
+  tags: veles
 
 - name: Download and install Min (web browser)
   apt:
     deb: https://github.com/minbrowser/min/releases/download/v1.16.0/min_1.16.0_amd64.deb
   when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux")
+  tags: min
 
 - name: Download lf
   become: no
@@ -63,6 +65,7 @@
     url: https://github.com/gokcehan/lf/releases/download/r17/lf-linux-amd64.tar.gz
     dest: /home/{{ ansible_user }}/Downloads/lf-linux-amd64.tar.gz
     checksum: sha256:1512EA940DEE831BCCC918FA804059D76837B7758A0A2AF6B5E6C8A616B8B864
+  tags: lf
 
 
 - name: Insall lf
@@ -79,6 +82,7 @@
     owner: root
     group: staff
     mode: '0755'
+  tags: lf
 
 - name: Set up .zshrc
   become: no
@@ -86,7 +90,9 @@
     dest: /home/{{ ansible_user }}/.zshrc
     src: zshrc.j2
     backup: yes
-  tags: zshrc
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  tags: [zshrc, zsh]
 
 - name: Deploy aliasrc
   become: no
@@ -94,7 +100,9 @@
     dest: /home/{{ ansible_user }}/.config/aliasrc
     src: aliasrc.j2
     backup: yes
-  tags: aliasrc
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  tags: [aliasrc, zsh]
 
 - name: Deploy shortcutrc
   become: no
@@ -102,19 +110,27 @@
     dest: /home/{{ ansible_user }}/.config/shortcutrc
     src: shortcutrc.j2
     backup: yes
-  tags: shortcutrc
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  tags: [shortcutrc, zsh]
 
 - name: create .zsh dir
   become: no
   file:
     path: /home/{{ ansible_user }}/.zsh
     state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
 
 - name: create .zplug dir
   become: no
   file:
-    path: /home/{{ ansible_user }}/.zsh
+    path: /home/{{ ansible_user }}/.zplug
     state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  tags: [zplug, zsh]
 
 - name: create .zplug dir and copy all the necessary files into it
   command: cp -r /usr/share/zplug/ /home/{{ ansible_user }}/.zplug/
+  tags: [zplug, zsh]

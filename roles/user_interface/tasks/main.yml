@@ -32,11 +32,14 @@
     dest: /home/{{ ansible_user }}/.config/compton.conf
     src: compton.conf.j2
     backup: yes
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
   tags: compton
 
 - name: Ensures /home/{{ ansible_user }}/.config/i3 dir exists
   become: no
   file: path=/home/{{ ansible_user }}/.config/i3 state=directory
+  tags: i3
 
 - name: Copy i3 config
   become: no
@@ -44,10 +47,14 @@
     dest: /home/{{ ansible_user }}/.config/i3/config
     src: i3_config.j2
     backup: yes
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  tags: [i3config, i3]
 
 - name: Ensures /home/{{ ansible_user }}/.config/i3status dir exists
   become: no
   file: path=/home/{{ ansible_user }}/.config/i3status state=directory
+  tags: [i3status, i3]
 
 - name: Copy i3status config
   become: no
@@ -55,10 +62,14 @@
     dest: /home/{{ ansible_user }}/.config/i3status/config
     src: i3status_config.j2
     backup: yes
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  tags: [i3status, i3]
 
 - name: Ensures /home/{{ ansible_user }}/.config/dunst dir exists
   become: no
   file: path=/home/{{ ansible_user }}/.config/dunst state=directory
+  tags: dunst
 
 - name: Copy dunstrc
   become: no
@@ -66,6 +77,9 @@
     dest: /home/{{ ansible_user }}/.config/dunst/dunstrc
     src: dunstrc.j2
     backup: yes
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  tags: [dunstrc, dunst]
 
 - name: Copy .xsettingsd
   become: no
@@ -73,6 +87,9 @@
     dest: /home/{{ ansible_user }}/.xsettingsd
     src: xsettingsd.j2
     backup: yes
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  tags: [xsettingsd, xsettings]
 
 - name: Copy .Xresources
   become: no
@@ -80,10 +97,14 @@
     dest: /home/{{ ansible_user }}/.Xresources
     src: xresources.j2
     backup: yes
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  tags: xresources
 
 - name: Ensures /home/{{ ansible_user }}/.urxvt dir exists
   become: no
   file: path=/home/{{ ansible_user }}/.urxvt state=directory
+  tags: urxvt
 
 - name: Urxvt clipboard
   become: no
@@ -91,6 +112,9 @@
     dest: /home/{{ ansible_user }}/.urxvt/clipboard
     src: clipboard.j2
     backup: yes
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  tags: [clipboard, urxvt]
 
 - name: Urxvt url select
   become: no
@@ -98,6 +122,9 @@
     dest: /home/{{ ansible_user }}/.urxvt/url_select
     src: url_select.j2
     backup: yes
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  tags: [url_select, urxvt]
 
 - name: Urxvt keyboard select
   become: no
@@ -105,11 +132,15 @@
     dest: /home/{{ ansible_user }}/.urxvt/keyboard_select
     src: keyboard_select.j2
     backup: yes
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  tags: [keyboard_select, urxvt]
 
 - name: Install himawaripy
   become: no
   pip:
     name: git+https://github.com/boramalper/himawaripy.git
+  tags: [himawaripy, himawari, bg_changer]
 
 - name: Copy background changer script
   become: no
@@ -117,6 +148,9 @@
     dest: /home/{{ ansible_user }}/bg_changer.sh
     src: bg_changer.j2
     backup: yes
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  tags: [bg, bg_changer, himararipy, himawari]
 
 - name: Periodically update images and set them as new background.
   become: no
@@ -125,3 +159,4 @@
     name: "update background"
     minute: "*/15"
     job: "/usr/bin/sh /home/{{ ansible_user }}/bg_changer.sh"
+  tags: [bg, bg_changer, himararipy, himawari]
