@@ -1,16 +1,14 @@
 # Zplug really doesn't work without this
 source ~/.zplug/init.zsh
 
+# Gray color for autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=247'
+
 # fzf settings. Uses sharkdp/fd for a faster alternative to `find`.
 FZF_CTRL_T_COMMAND='fd --type f --hidden --exclude .git --exclude .cache'
 FZF_ALT_C_COMMAND='fd --type d --hidden --exclude .git'
 
 #### Zplug Section #####
-# zplug check returns true if all packages are installed
-# Therefore, when it returns false, run zplug install
-if ! zplug check; then
-    zplug install
-fi
 
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
@@ -25,6 +23,10 @@ zplug "zsh-users/zsh-history-substring-search", defer:3
 # Other plugins
 zplug "woefe/git-prompt.zsh", use:"{git-prompt.zsh,examples/wprompt.zsh}"
 zplug "sharkdp/fd", from:gh-r, as:command, rename-to:fd, use:"*x86_64-unknown-linux-gnu.tar.gz"
+zplug "woefe/wbase.zsh"
+zplug "junegunn/fzf", use:"shell/*.zsh"
+zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*linux*amd64*"
+
 
 # Manage local plugins
 zplug "~/.zsh", from:local
@@ -62,3 +64,6 @@ if ! zplug check --verbose; then
         echo; zplug install
     fi
 fi
+
+# And load everything
+zplug load
