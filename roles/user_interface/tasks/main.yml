@@ -103,7 +103,11 @@
 
 - name: Ensures /home/{{ ansible_user }}/.urxvt dir exists
   become: no
-  file: path=/home/{{ ansible_user }}/.urxvt state=directory
+  file: 
+    path: /home/{{ ansible_user }}/.urxvt
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
   tags: urxvt
 
 - name: Urxvt clipboard
