@@ -4,5 +4,15 @@
     pkg:
     - vscode
     - strace
+    - ltrace
     - google-perftools
     - devscripts
+    - python3-dev
+    - libffi-dev
+    - build-essential
+    - virtualenvwrapper
+
+- name: Create ~/Code directory where I typically keep my projects and code
+  become: no
+  file: path={{ project_path }} state=directory
+  tags: code

@@ -1,1 +1,14 @@
 ---
+
+- name: Make angr virtualenv
+  shell: "./usr/share/virtualenvwrapper/virtualenvwrapper.sh && mkvirtualenv angr --python={{ python_path }} --no-site-packages"
+  args:
+    executable: /bin/bash
+    creates: "{{ virtualenv_dir }}/angr"
+  register: mkvirtualenv
+  failed_when: 'mkvirtualenv.changed and "New python executable" not in mkvirtualenv.stdout'
+
+- name: Install angr
+  pip:
+    name: angr
+    virtualenv: "{{ virtualenv_dir }}/angr"

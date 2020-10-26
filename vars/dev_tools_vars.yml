@@ -1,0 +1,4 @@
+---
+
+- vars:
+    project_path: /home/{{ ansible_user }}/Code

@@ -3,32 +3,13 @@
   hosts: laptop
   become: true
   become_user: root
-
-  tasks:
-    - name: Get aptitude for upgrade
-      apt: pkg=aptitude state=present
-
-    - name: Safe system upgrade via aptitude
-      apt: upgrade=safe
-    
-    - name: Update all packages
-      apt:
-        name: "*"
-        state: latest
-    
-    - name: Upgrade the OS (apt-get dist-upgrade)
-      apt:
-        upgrade: dist
-
-    - name: Remove useless packages from the cache
-      apt:
-        autoclean: yes
-
-    - name: Remove dependencies that are no longer required
-      apt:
-        autoremove: yes
+  vars_files:
+    - /vars/system_tools_vars.yml
+    - /vars/dev_tools_vars.yml
+    - /vars/reversing_tools_vars.yml
 
   roles:
+    - init
     - system_tools
     - user_interface
     - dev_tools

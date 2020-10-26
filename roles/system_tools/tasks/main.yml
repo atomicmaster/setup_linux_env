@@ -82,7 +82,7 @@
     dest: /usr/local/bin
   tags: lf
 
-- name: Change ownership of, group and permissions
+- name: Change ownership of lf, group and permissions
   file:
     path: /usr/local/bin/lf
     owner: root

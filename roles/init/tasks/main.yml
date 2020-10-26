@@ -1,0 +1,24 @@
+---
+
+- name: Make sure aptitude is installed
+  apt: pkg=aptitude state=present
+
+- name: Safe system upgrade
+  apt: upgrade=safe
+
+- name: Update all packages
+  apt:
+    name: "*"
+    state: latest
+
+- name: Upgrade the OS (apt dist-upgrade)
+  apt:
+    upgrade: dist
+
+- name: Remove useless packages from the cache
+  apt:
+    autoclean: yes
+
+- name: Remove dependencies that are no longer required
+  apt:
+    autoremove: yes
