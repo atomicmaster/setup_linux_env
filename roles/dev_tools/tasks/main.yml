@@ -15,7 +15,7 @@
 - name: Create ~/Code directory where I typically keep my projects and code
   become: no
   file: 
-    path: {{ project_path }}
+    path: "{{ project_path }}"
     state: directory
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"

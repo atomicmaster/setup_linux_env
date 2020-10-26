@@ -24,12 +24,16 @@
 
 - name: Ensures /home/{{ ansible_user }}/.config dir exists
   become: no
-  file: path=/home/{{ ansible_user }}/.config state=directory
+  file: 
+    path: "/home/{{ ansible_user }}/.config"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
 
 - name: Copy compton config
   become: no
   template:
-    dest: /home/{{ ansible_user }}/.config/compton.conf
+    dest: "/home/{{ ansible_user }}/.config/compton.conf"
     src: compton.conf.j2
     backup: yes
     owner: "{{ ansible_user }}"
@@ -38,13 +42,17 @@
 
 - name: Ensures /home/{{ ansible_user }}/.config/i3 dir exists
   become: no
-  file: path=/home/{{ ansible_user }}/.config/i3 state=directory
+  file: 
+    path: "/home/{{ ansible_user }}/.config/i3"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
   tags: i3
 
 - name: Copy i3 config
   become: no
   template:
-    dest: /home/{{ ansible_user }}/.config/i3/config
+    dest: "/home/{{ ansible_user }}/.config/i3/config"
     src: i3_config.j2
     backup: yes
     owner: "{{ ansible_user }}"
@@ -53,13 +61,17 @@
 
 - name: Ensures /home/{{ ansible_user }}/.config/i3status dir exists
   become: no
-  file: path=/home/{{ ansible_user }}/.config/i3status state=directory
+  file: 
+    path: "/home/{{ ansible_user }}/.config/i3status"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
   tags: [i3status, i3]
 
 - name: Copy i3status config
   become: no
   template:
-    dest: /home/{{ ansible_user }}/.config/i3status/config
+    dest: "/home/{{ ansible_user }}/.config/i3status/config"
     src: i3status_config.j2
     backup: yes
     owner: "{{ ansible_user }}"
@@ -68,13 +80,17 @@
 
 - name: Ensures /home/{{ ansible_user }}/.config/dunst dir exists
   become: no
-  file: path=/home/{{ ansible_user }}/.config/dunst state=directory
+  file: 
+    path: "/home/{{ ansible_user }}/.config/dunst"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
   tags: dunst
 
 - name: Copy dunstrc
   become: no
   template:
-    dest: /home/{{ ansible_user }}/.config/dunst/dunstrc
+    dest: "/home/{{ ansible_user }}/.config/dunst/dunstrc"
     src: dunstrc.j2
     backup: yes
     owner: "{{ ansible_user }}"
@@ -84,7 +100,7 @@
 - name: Copy .xsettingsd
   become: no
   template:
-    dest: /home/{{ ansible_user }}/.xsettingsd
+    dest: "/home/{{ ansible_user }}/.xsettingsd"
     src: xsettingsd.j2
     backup: yes
     owner: "{{ ansible_user }}"
@@ -94,7 +110,7 @@
 - name: Copy .Xresources
   become: no
   template:
-    dest: /home/{{ ansible_user }}/.Xresources
+    dest: "/home/{{ ansible_user }}/.Xresources"
     src: xresources.j2
     backup: yes
     owner: "{{ ansible_user }}"
@@ -104,7 +120,7 @@
 - name: Ensures /home/{{ ansible_user }}/.urxvt dir exists
   become: no
   file: 
-    path: /home/{{ ansible_user }}/.urxvt
+    path: "/home/{{ ansible_user }}/.urxvt"
     state: directory
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
@@ -113,7 +129,7 @@
 - name: Urxvt clipboard
   become: no
   template:
-    dest: /home/{{ ansible_user }}/.urxvt/clipboard
+    dest: "/home/{{ ansible_user }}/.urxvt/clipboard"
     src: clipboard.j2
     backup: yes
     owner: "{{ ansible_user }}"
@@ -123,7 +139,7 @@
 - name: Urxvt url select
   become: no
   template:
-    dest: /home/{{ ansible_user }}/.urxvt/url_select
+    dest: "/home/{{ ansible_user }}/.urxvt/url_select"
     src: url_select.j2
     backup: yes
     owner: "{{ ansible_user }}"
@@ -133,7 +149,7 @@
 - name: Urxvt keyboard select
   become: no
   template:
-    dest: /home/{{ ansible_user }}/.urxvt/keyboard_select
+    dest: "/home/{{ ansible_user }}/.urxvt/keyboard_select"
     src: keyboard_select.j2
     backup: yes
     owner: "{{ ansible_user }}"
@@ -158,7 +174,7 @@
 - name: Change to natural scrolling for the touchpad
   become: yes
   template:
-    dest: /etc/X11/xorg.conf.d/90-synaptics.conf
+    dest: '/etc/X11/xorg.conf.d/90-synaptics.conf'
     src: 90-synaptics.conf.j2
     backup: yes
   tags: [xorg, touchpad, scrolling]
