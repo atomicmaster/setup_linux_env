@@ -1,5 +1,15 @@
 ---
 
+- name: Let's create the {{ virtualenv_dir }}, so we don't have the problem where it's somehow created as root even though the command is explicitly set to become no
+  become: no
+  file: 
+    path: "{{ virtualenv_dir }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  tags: virtualenv
+
+
 - name: Make angr virtualenv
   become: no
   shell: "export WORKON_HOME={{ virtualenv_dir }} && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh && mkvirtualenv angr --python={{ python_path }}"
@@ -8,9 +18,11 @@
     creates: "{{ virtualenv_dir }}/angr"
   register: mkvirtualenv
   failed_when: 'mkvirtualenv.changed and "New python executable" not in mkvirtualenv.stdout'
+  tags: [virtualenv, angr]
 
 - name: Install angr
   become: no
   pip:
     name: angr
     virtualenv: "{{ virtualenv_dir }}/angr"
+  tags: angr
