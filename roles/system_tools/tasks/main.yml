@@ -86,7 +86,7 @@
   become: yes
   become_user: root
   unarchive:
-    src: /home/{{ ansible_user }}/Downloads/lf-linux-amd64.tar.gz
+    src: "/home/{{ ansible_user }}/Downloads/lf-linux-amd64.tar.gz"
     dest: /usr/local/bin
   tags: lf
 
@@ -101,7 +101,7 @@
 - name: Set up .zshrc
   become: no
   template:
-    dest: /home/{{ ansible_user }}/.zshrc
+    dest: "/home/{{ ansible_user }}/.zshrc"
     src: zshrc.j2
     backup: yes
     owner: "{{ ansible_user }}"
@@ -111,7 +111,7 @@
 - name: Deploy aliasrc
   become: no
   template:
-    dest: /home/{{ ansible_user }}/.config/aliasrc
+    dest: "/home/{{ ansible_user }}/.config/aliasrc"
     src: aliasrc.j2
     backup: yes
     owner: "{{ ansible_user }}"
@@ -121,7 +121,7 @@
 - name: Deploy shortcutrc
   become: no
   template:
-    dest: /home/{{ ansible_user }}/.config/shortcutrc
+    dest: "/home/{{ ansible_user }}/.config/shortcutrc"
     src: shortcutrc.j2
     backup: yes
     owner: "{{ ansible_user }}"
@@ -131,7 +131,7 @@
 - name: create .zsh dir
   become: no
   file:
-    path: /home/{{ ansible_user }}/.zsh
+    path: "/home/{{ ansible_user }}/.zsh"
     state: directory
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
@@ -139,12 +139,12 @@
 - name: create .zplug dir
   become: no
   file:
-    path: /home/{{ ansible_user }}/.zplug
+    path: "/home/{{ ansible_user }}/.zplug"
     state: directory
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
   tags: [zplug, zsh]
 
 - name: create .zplug dir and copy all the necessary files into it
-  command: cp -r /usr/share/zplug/ /home/{{ ansible_user }}/.zplug/
+  command: "cp -r /usr/share/zplug/ /home/{{ ansible_user }}/.zplug/"
   tags: [zplug, zsh]
