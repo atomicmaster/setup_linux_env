@@ -54,16 +54,24 @@
       - gcc-10-base
       - libgcc-10-dev      
 
+- name: Check if Veles is installed
+  command: dpkg-query -l veles
+  register: veles_check
+
 - name: Download and install Veles
   apt:
     deb: https://github.com/codilime/veles/releases/download/2018.05.0.TIF/Veles_2018.05_64bit_Ubuntu1604.deb
-  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux")
+  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux") and veles_check.stdout.find('no packages found') != -1
   tags: veles
+
+- name: Check if Min is installed
+  command: dpkg-query -l min
+  register: min_check
 
 - name: Download and install Min (web browser)
   apt:
     deb: https://github.com/minbrowser/min/releases/download/v1.16.0/min_1.16.0_amd64.deb
-  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux")
+  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux") and min_check.stdout.find('no packages found') != -1
   tags: min
 
 - name: Download lf

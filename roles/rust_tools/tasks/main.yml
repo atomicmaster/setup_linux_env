@@ -1,12 +1,20 @@
 ---
+- name: Check if Bat is installed
+  command: dpkg-query -l libgcc1
+  register: libgcc1_check
+
 - name: Installing a bat dependency that itself had failed dependencies
   apt:
     deb: https://github.com/atomicmaster/setup_linux_env/raw/master/packages/libgcc1_amd64.deb
-  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux")
+  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux") and libgcc1_check.stdout.find('no packages found') != -1
   tags: [bat, libgcc1]
+
+- name: Check if Bat is installed
+  command: dpkg-query -l bat
+  register: bat_check
 
 - name: Download and install bat (cat, but better, and written in Rust)
   apt:
     deb: https://github.com/sharkdp/bat/releases/download/v0.16.0/bat_0.16.0_amd64.deb
-  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux")
+  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux") and bat_check.stdout.find('no packages found') != -1
   tags: bat
