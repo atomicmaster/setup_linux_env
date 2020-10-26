@@ -11,7 +11,8 @@
 
 
 - name: Make angr virtualenv
-  become: no
+  become: yes
+  become_user: {{ ansible_user }}
   shell: "export WORKON_HOME={{ virtualenv_dir }} && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh && mkvirtualenv angr --python={{ python_path }}"
   args:
     executable: /bin/bash
