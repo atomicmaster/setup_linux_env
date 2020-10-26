@@ -10,20 +10,13 @@
   tags: virtualenv
 
 
-- name: Make angr virtualenv
+- name: Make angr virtualenv and install angr
   become: no
   become_user: "{{ ansible_user }}"
-  shell: "export WORKON_HOME={{ virtualenv_dir }} && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh && mkvirtualenv angr --python={{ python_path }}"
+  shell: "export WORKON_HOME={{ virtualenv_dir }} && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh && mkvirtualenv angr --python={{ python_path }} -i angr"
   args:
     executable: /bin/bash
     creates: "{{ virtualenv_dir }}/angr"
   register: mkvirtualenv
   failed_when: 'mkvirtualenv.changed and "New python executable" not in mkvirtualenv.stdout'
   tags: [virtualenv, angr]
-
-- name: Install angr
-  become: no
-  pip:
-    name: angr
-    virtualenv: "{{ virtualenv_dir }}/angr"
-  tags: angr
