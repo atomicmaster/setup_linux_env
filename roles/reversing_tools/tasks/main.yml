@@ -1,6 +1,8 @@
 ---
 
 - name: Make angr virtualenv
+  become: no
+  become_user: {{ ansible_user }}
   shell: "source /usr/share/virtualenvwrapper/virtualenvwrapper.sh && mkvirtualenv angr --python={{ python_path }} --no-site-packages"
   args:
     executable: /bin/bash
@@ -9,6 +11,8 @@
   failed_when: 'mkvirtualenv.changed and "New python executable" not in mkvirtualenv.stdout'
 
 - name: Install angr
+  become: no
+  become_user: {{ ansible_user }}
   pip:
     name: angr
     virtualenv: "{{ virtualenv_dir }}/angr"
