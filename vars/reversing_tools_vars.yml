@@ -1,3 +1,3 @@
 ---
-- vars:
-    virtualenv_dir: /home/{{ ansible_user }}/.virtualenvs
+
+virtualenv_dir: /home/{{ ansible_user }}/.virtualenvs

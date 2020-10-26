@@ -1,4 +1,3 @@
 ---
 
-- vars:
-    python_path = /usr/bin/python3
+python_path: /usr/bin/python3
