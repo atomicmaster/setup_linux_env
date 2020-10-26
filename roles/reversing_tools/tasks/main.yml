@@ -1,7 +1,7 @@
 ---
 
 - name: Make angr virtualenv
-  shell: "./usr/share/virtualenvwrapper/virtualenvwrapper.sh && mkvirtualenv angr --python={{ python_path }} --no-site-packages"
+  shell: "source /usr/share/virtualenvwrapper/virtualenvwrapper.sh && mkvirtualenv angr --python={{ python_path }} --no-site-packages"
   args:
     executable: /bin/bash
     creates: "{{ virtualenv_dir }}/angr"
