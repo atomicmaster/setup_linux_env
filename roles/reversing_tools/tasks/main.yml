@@ -2,7 +2,7 @@
 
 - name: Make angr virtualenv
   become: no
-  shell: "export WORKON_HOME={{ virtualenv_dir }} && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh && mkvirtualenv angr --python={{ python_path }} --no-site-packages"
+  shell: "export WORKON_HOME={{ virtualenv_dir }} && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh && mkvirtualenv angr --python={{ python_path }}"
   args:
     executable: /bin/bash
     creates: "{{ virtualenv_dir }}/angr"
