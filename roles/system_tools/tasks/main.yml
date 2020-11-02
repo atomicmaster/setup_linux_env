@@ -62,7 +62,7 @@
 - name: Download and install Veles
   apt:
     deb: https://github.com/codilime/veles/releases/download/2018.05.0.TIF/Veles_2018.05_64bit_Ubuntu1604.deb
-  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux") and veles_check.stdout.find('no packages found') != -1
+  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux") and veles_check.stdout.find('no packages found') == -1
   tags: veles
 
 - name: Check if Min is installed
@@ -73,7 +73,7 @@
 - name: Download and install Min (web browser)
   apt:
     deb: https://github.com/minbrowser/min/releases/download/v1.16.0/min_1.16.0_amd64.deb
-  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux") and min_check.stdout.find('no packages found') != -1
+  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux") and min_check.stdout.find('no packages found') == -1
   tags: min
 
 - name: Check if Didscord is installed
@@ -84,7 +84,7 @@
 - name: Download and install Discord
   apt:
     deb: https://discord.com/api/download?platform=linux&format=deb
-  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux") and discord_check.stdout.find('no packages found') != -1
+  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux") and discord_check.stdout.find('no packages found') == -1
   tags: discord
 
 - name: Download lf
