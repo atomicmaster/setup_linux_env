@@ -74,6 +74,16 @@
   when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux") and min_check.stdout.find('no packages found') != -1
   tags: min
 
+- name: Check if Didscord is installed
+  command: dpkg-query -l discord
+  register: discord_check
+
+- name: Download and install Discord
+  apt:
+    deb: https://discord.com/api/download?platform=linux&format=deb
+  when: ansible_userspace_architecture == 'x86_64' and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Parrot GNU/Linux") and discord_check.stdout.find('no packages found') != -1
+  tags: discord
+
 - name: Download lf
   become: no
   get_url:
