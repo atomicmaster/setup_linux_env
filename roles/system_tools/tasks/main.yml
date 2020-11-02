@@ -52,11 +52,12 @@
   apt:
     pkg:
       - gcc-10-base
-      - libgcc-10-dev      
+      - libgcc-10-dev
 
 - name: Check if Veles is installed
   command: dpkg-query -l veles
   register: veles_check
+  ignore_errors: yes
 
 - name: Download and install Veles
   apt:
@@ -67,6 +68,7 @@
 - name: Check if Min is installed
   command: dpkg-query -l min
   register: min_check
+  ignore_errors: yes
 
 - name: Download and install Min (web browser)
   apt:
@@ -77,6 +79,7 @@
 - name: Check if Didscord is installed
   command: dpkg-query -l discord
   register: discord_check
+  ignore_errors: yes
 
 - name: Download and install Discord
   apt:
