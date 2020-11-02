@@ -17,6 +17,7 @@
   args:
     executable: /bin/bash
     creates: "{{ virtualenv_dir }}/angr"
+  ignore_errors: yes
   register: mkvirtualenv
   failed_when: 'mkvirtualenv.changed and "New python executable" not in mkvirtualenv.stdout'
   tags: [virtualenv, angr]
