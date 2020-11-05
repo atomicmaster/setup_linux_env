@@ -10,6 +10,8 @@ alias grep='grep --color=auto'
 alias diff='colordiff'
 alias find='fdfind'
 alias fd='fdfind'
+alias switch_to_monitor='xrandr --output HDMI-A-0 --primary && xrandr --output eDP --off'
+alias switch_to_laptop='xrandr --output eDP --primary && xrandr --output HDMI-A-0 --off'
 
 # Some nice xclip aliases
 if (( $+commands[xclip] && $#DISPLAY )); then
