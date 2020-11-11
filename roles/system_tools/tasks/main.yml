@@ -47,6 +47,7 @@
     - firejail-profiles
     - colordiff
     - fd-find
+    - pylint
 
 - name: Download and install dependencies for stuff later on
   apt:
