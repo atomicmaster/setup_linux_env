@@ -48,6 +48,7 @@
     - colordiff
     - fd-find
     - pylint
+    - libgoogle-perftools-dev
 
 - name: Download and install dependencies for stuff later on
   apt:
