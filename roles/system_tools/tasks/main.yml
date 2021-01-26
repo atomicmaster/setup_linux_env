@@ -163,3 +163,11 @@
 - name: create .zplug dir and copy all the necessary files into it
   command: "cp -r /usr/share/zplug/ /home/{{ ansible_user }}/.zplug/"
   tags: [zplug, zsh]
+
+- name: Set LD_PRELOAD
+  lineinfile:
+    dest: /etc/environment
+    state: present
+    regexp: '^LD_PRELOAD'
+    line: 'LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4'
+
