@@ -48,7 +48,10 @@
     - colordiff
     - fd-find
     - pylint
-    - libgoogle-perftools-dev
+    - pulseaudio
+    - pasystray
+    - pulseaudio-utils
+    - pulseeffects
 
 - name: Download and install dependencies for stuff later on
   apt:
@@ -164,10 +167,31 @@
   command: "cp -r /usr/share/zplug/ /home/{{ ansible_user }}/.zplug/"
   tags: [zplug, zsh]
 
+- name: Let's get some security things installed
+  apt:
+    pkg:
+      - libgoogle-perftools-dev
+      - libpam-tmpdir
+      - apt-listbugs
+      - debsecan
+      - debsums
+      - fail2ban
+      - libpam-passwdqc
+      - needrestart
+      - nftables
+
 - name: Set LD_PRELOAD
   lineinfile:
     dest: /etc/environment
     state: present
     regexp: '^LD_PRELOAD'
     line: 'LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4'
+
+- name: Change permissions of redis-openvas.conf to make it world unreadable
+  file:
+    path: /etc/redis/redis-openvas.conf
+    owner: redis
+    group: redis
+    mode: '0640'
+  tags: redis
 
