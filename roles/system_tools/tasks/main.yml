@@ -52,6 +52,8 @@
     - pasystray
     - pulseaudio-utils
     - pulseeffects
+    - btop
+    - tldr
 
 - name: Download and install dependencies for stuff later on
   apt:
