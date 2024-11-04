@@ -54,6 +54,10 @@
     - pulseeffects
     - btop
     - tldr
+    - zoxide
+    - nala
+    - tmux
+
 
 - name: Download and install dependencies for stuff later on
   apt:
